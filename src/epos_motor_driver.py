@@ -5,7 +5,7 @@ import time
 # sprobowac zaladowac biblioteke po nazwie (lib_name) - wtedy laduje sie z domyslnej lokalizacji gdzie linux instaluje libki
 # jeśli nie zadziała, wrzucić libke do lokalizacji pliku ze skryptem i użyć lib_path do załadowania
 # lib_path = "./libEposCmd.so.6.7.1.0"
-lib_name = "libEposCmd.so.6.7.1.0"    
+lib_name = "libEposCmd.so"
 epos_lib = cdll.LoadLibrary(lib_name)
 
 class EposMotorDriver:
