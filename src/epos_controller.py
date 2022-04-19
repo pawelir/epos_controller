@@ -14,11 +14,11 @@ class EposController:
         self.right_side_motors = (self.motor2, self.motor4)
         self.motors = self.left_side_motors + self.right_side_motors
 
-    def move(self, Vl=0, Vr=0) -> None:
+    def move(self, wheel_speed_left=0, wheel_speed_right=0) -> None:
         for motor in self.left_side_motors:
-            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, Vl, byref(motor.pErrorCode))
+            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, wheel_speed_left, byref(motor.pErrorCode))
         for motor in self.right_side_motors:
-            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, -Vr, byref(motor.pErrorCode))
+            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, -wheel_speed_right, byref(motor.pErrorCode))
 
     def stop(self) -> None:
         for motor in self.motors:
