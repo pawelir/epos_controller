@@ -1,8 +1,8 @@
 #! /usr/bin/env python3
 
 from ctypes import *
-from platform import node
 from epos_motor_driver import EposMotorDriver, EposSubMotorDriver, epos_lib
+
 
 class EposController:
     def __init__(self) -> None:
@@ -16,13 +16,22 @@ class EposController:
 
     def move(self, wheel_speed_left=0, wheel_speed_right=0) -> None:
         for motor in self.left_side_motors:
-            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, wheel_speed_left, byref(motor.pErrorCode))
+            epos_lib.VCS_MoveWithVelocity(
+                motor.keyHandle, motor.nodeID, wheel_speed_left, byref(motor.pErrorCode)
+            )
         for motor in self.right_side_motors:
-            epos_lib.VCS_MoveWithVelocity(motor.keyHandle, motor.nodeID, -wheel_speed_right, byref(motor.pErrorCode))
+            epos_lib.VCS_MoveWithVelocity(
+                motor.keyHandle,
+                motor.nodeID,
+                -wheel_speed_right,
+                byref(motor.pErrorCode),
+            )
 
     def stop(self) -> None:
         for motor in self.motors:
-            epos_lib.VCS_HaltVelocityMovement(motor.keyHandle, motor.nodeID, byref(motor.pErrorCode))
+            epos_lib.VCS_HaltVelocityMovement(
+                motor.keyHandle, motor.nodeID, byref(motor.pErrorCode)
+            )
 
     def disable_motors(self) -> None:
         for motor in self.motors:
