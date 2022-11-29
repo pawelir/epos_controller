@@ -6,7 +6,7 @@ ROS wrapper for the MAXON EPOS motor controllers
 
 ## Building from Source
 
-[![Source build and test](https://github.com/pawelir/epos_controller/actions/workflows/colcon-build-test.yaml/badge.svg)](https://github.com/pawelir/epos_controller/actions/workflows/colcon-build-test.yaml)
+[![Source build and test](https://github.com/pawelir/epos_controller/actions/workflows/colcon-test-build.yaml/badge.svg)](https://github.com/pawelir/epos_controller/actions/workflows/colcon-test-build.yaml)
 
 ### Dependencies
 
